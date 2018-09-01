@@ -175,7 +175,7 @@ public final class BCryptDigest {
 
         let encodedBytes = UnsafeMutablePointer<Int8>.allocate(capacity: 25)
         defer { encodedBytes.deallocate() }
-        encode_base64(encodedBytes, dataBytes, dataBytes.count)
+        libcrypt_encode_base64(encodedBytes, dataBytes, dataBytes.count)
 
         return String(cString: encodedBytes)
     }
