@@ -1,6 +1,6 @@
 @_exported import Core
 
-extension Collection where Element: Equatable {
+extension Collection where Element: Equatable, IndexDistance == Int {
     /// Performs a full-comparison of all elements in two collections. If the two collections have
     /// a different number of elements, the function will compare all elements in the smaller collection
     /// first and then return false.
@@ -14,7 +14,7 @@ extension Collection where Element: Equatable {
     /// - parameters:
     ///     - other: Collection to compare to.
     /// - returns: `true` if the collections are equal.
-    public func secureCompare<C>(to other: C) -> Bool where C: Collection, C.Element == Element {
+    public func secureCompare<C>(to other: C) -> Bool where C: Collection, C.Element == Element, C.IndexDistance == IndexDistance {
         let chk = self
         let sig = other
         
