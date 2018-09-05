@@ -9,10 +9,10 @@ let package = Package(
     ],
     dependencies: [
         // 🌎 Utility package containing tools for byte manipulation, Codable, OS APIs, and debugging.
-        .package(url: "https://github.com/readdle/vapor-core.git", from: "3.4.3"),
+        .package(url: "https://github.com/readdle/vapor-core.git", .upToNextMajor(from: "3.4.4")),
 
         /// Bindings to OpenSSL-compatible libraries for TLS support in SwiftNIO
-        .package(url: "https://github.com/readdle/swift-nio-ssl.git", from: "1.2.2"),
+        .package(url: "https://github.com/readdle/swift-nio-ssl.git", .upToNextMajor(from: "1.2.3")),
     ],
     targets: [
         .target(name: "Crypto", dependencies: [
