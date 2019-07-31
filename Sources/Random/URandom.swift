@@ -1,6 +1,13 @@
 import Foundation
 import COperatingSystem
 
+#if os(Android)
+typealias FILE_POINTER = OpaquePointer
+#else
+typealias FILE_POINTER = UnsafeMutablePointer<FILE>
+#endif
+
+
 /// URandom represents a file connection to /dev/urandom on Unix systems.
 /// `/dev/urandom` is a cryptographically secure random generator provided by the OS.
 public final class URandom: DataGenerator {
@@ -11,7 +18,7 @@ public final class URandom: DataGenerator {
     }
 
     /// Internal file pointer.
-    private let file: UnsafeMutablePointer<FILE>
+    private let file: FILE_POINTER
 
     /// Initialize URandom
     public init(path: String = "/dev/urandom") throws {
