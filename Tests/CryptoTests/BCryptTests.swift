@@ -1,6 +1,9 @@
 import XCTest
 @testable import Crypto
 
+// Druk: we need this import to link system OpenSSL with this executable
+import OpenSSL
+
 class BCryptTests: XCTestCase {
     static let allTests = [
         ("testVersion", testVersion),
