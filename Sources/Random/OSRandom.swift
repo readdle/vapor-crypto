@@ -21,7 +21,7 @@ public struct OSRandom: DataGenerator {
 
     fileprivate func makeRandom(min: Int, max: Int) -> Int {
         let top = max - min + 1
-        #if os(Linux)
+        #if os(Linux) || os(Android)
             // will always be initialized
             guard randomInitialized else { fatalError() }
             return Int(COperatingSystem.random() % top) + min
@@ -35,7 +35,7 @@ extension Int {
     fileprivate static let maxByte: Int = Int(Byte.max)
 }
 
-#if os(Linux)
+#if os(Linux) || os(Android)
     /// Generates a random number between (and inclusive of)
     /// the given minimum and maximum.
     private let randomInitialized: Bool = {
